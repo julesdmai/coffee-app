@@ -21,7 +21,6 @@ export class MenuPage extends HTMLElement {
   // When component is attached to DOM
   connectedCallback() {
     const template = document.getElementById("menu-page-template");
-    console.log({template});
     const content = template.content.cloneNode(true);
     this.root.appendChild(content);
 
