@@ -1,3 +1,4 @@
+// Adding and removing from cart functionality
 import { getProductById } from "./Menu.js";
 
 export async function addToCart(id) {

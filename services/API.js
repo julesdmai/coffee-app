@@ -1,3 +1,4 @@
+// API call
 const API = {
   url: "/data/menu.json",
   fetchMenu: async () => {
