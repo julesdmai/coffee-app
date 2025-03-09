@@ -1,11 +1,10 @@
 export class OrderPage extends HTMLElement {
-
   #user = {
     name: "",
     phone: "",
-    email: ""
-  }
-  
+    email: "",
+  };
+
   constructor() {
     super();
 
@@ -64,19 +63,19 @@ export class OrderPage extends HTMLElement {
         `;
     }
 
-    this.setFormBindings(this.root.querySelector("form")); 
+    this.setFormBindings(this.root.querySelector("form"));
   }
 
-    setFormBindings(form) {
-      form.addEventListener("submit", event => {
-        event.preventDefault();
-        alert(`Thanks for your order ${this.#user.name}`)
-        this.#user.name = "";
-        this.#user.email = "";
-        this.#user.phone = "";
- 
-        // TODO: Send the data to the erver
-      });
+  setFormBindings(form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      alert(`Thanks for your order ${this.#user.name}`);
+      this.#user.name = "";
+      this.#user.email = "";
+      this.#user.phone = "";
+
+      // TODO: Send the data to the erver
+    });
 
     // Set double data binding
     this.#user = new Proxy(this.#user, {
@@ -84,14 +83,13 @@ export class OrderPage extends HTMLElement {
         target[property] = value;
         form.elements[property].value = value;
         return true;
-      }
+      },
     });
-    Array.from(form.elements).forEach( element => {
-      element.addEventListener("change", event => {
+    Array.from(form.elements).forEach((element) => {
+      element.addEventListener("change", (event) => {
         this.#user[element.name] = element.value;
-      })
-    })
+      });
+    });
   }
 }
 customElements.define("order-page", OrderPage);
-

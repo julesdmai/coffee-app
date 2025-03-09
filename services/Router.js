@@ -45,6 +45,9 @@ const Router = {
             document.querySelector("main").appendChild(pageElement);
             window.scrollX = 0;
             window.scrollY = 0;
+        } else {
+            // 404
+            document.querySelector("main").innerHTML = "Oops, 404!"
         }
 
     }
