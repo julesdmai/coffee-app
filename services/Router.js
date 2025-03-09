@@ -29,7 +29,7 @@ const Router = {
                 pageElement = document.createElement("menu-page");
                 break;
             case "/order":
-                pageElement = document.createElement("orders-page");
+                pageElement = document.createElement("order-page");
                 break;
             default:
                 if (route.startsWith("/product-")) {
@@ -42,7 +42,6 @@ const Router = {
             // const cache = document.querySelector("main");
             // document.querySelector("main").children[0].remove();
             document.querySelector("main").innerHTML="";
-            console.log('appending'); // TODO: Debug - not apending here
             document.querySelector("main").appendChild(pageElement);
             window.scrollX = 0;
             window.scrollY = 0;
