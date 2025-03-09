@@ -8,6 +8,12 @@ const Router = {
                 Router.go(url);
             })
         })
+
+        // Event handler for URL changes
+        window.addEventListener("popstate", event => {
+            Router.go(event.state.route, false);
+        })        
+
         // Check the initial url
         Router.go(location.pathname);
     },
@@ -20,18 +26,23 @@ const Router = {
         let pageElement = null;
         switch (route) {
             case "/":
-                pageElement = document.createElement("h1");
-                pageElement.textContent = "Menu";
+                pageElement = document.createElement("menu-page");
                 break;
             case "/order":
-                pageElement = document.createElement("h1");
-                pageElement.textContent = "Your Order";
+                pageElement = document.createElement("orders-page");
                 break;
+            default:
+                if (route.startsWith("/product-")) {
+                    pageElement = document.createElement("details-page");
+                    const paramId = route.substring(route.lastIndexOf("-") + 1);
+                    pageElement.dataset.id = paramId;
+                }
         }
         if (pageElement) {
             // const cache = document.querySelector("main");
             // document.querySelector("main").children[0].remove();
             document.querySelector("main").innerHTML="";
+            console.log('appending'); // TODO: Debug - not apending here
             document.querySelector("main").appendChild(pageElement);
             window.scrollX = 0;
             window.scrollY = 0;
