@@ -6,10 +6,8 @@ export class MenuPage extends HTMLElement {
     this.root = this.attachShadow({ mode: "open" }); // allow outside access to inside this inner DOM
 
     const styles = document.createElement("style");
-
     this.root.appendChild(styles);
 
-    // load CSS
     async function loadCSS() {
       const request = await fetch("./components/MenuPage.css");
       const css = await request.text();
@@ -18,7 +16,7 @@ export class MenuPage extends HTMLElement {
     loadCSS();
   }
 
-  // When component is attached to DOM
+  // Called when component is attached to DOM
   connectedCallback() {
     const template = document.getElementById("menu-page-template");
     const content = template.content.cloneNode(true);
