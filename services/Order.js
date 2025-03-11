@@ -6,11 +6,10 @@ export async function addToCart(id) {
   const results = app.store.cart.filter(
     (prodInCart) => prodInCart.product.id == id
   );
-  if (results.length == 1) {
-    // The product is already in the cart
-    // Update the current item
-    // Return the array with one element changed
+  if (results.length == 1) { // The product is already in the cart
     app.store.cart = app.store.cart.map(
+        // Update the current item
+        // Return the array with one element changed
         p => p.product.id == id
         ? { ...p, quantity: p.quantity+1 }
         : p
