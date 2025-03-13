@@ -39,6 +39,7 @@ const Router = {
           pageElement.dataset.productId = paramId;
         }
     }
+
     if (pageElement) {
       // const cache = document.querySelector("main");
       // document.querySelector("main").children[0].remove();
