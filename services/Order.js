@@ -15,7 +15,7 @@ export async function addToCart(id) {
         : p
     );
   } else {
-    // Add to cart
+    // Add to cart - update state
     app.store.cart = [...app.store.cart, {product, quantity: 1}];
   }
 }
